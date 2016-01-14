@@ -1,28 +1,36 @@
-var name = "Ewok";
-var hits = 0;
-var health = 100;
+var player = {
+	name: "Arnold",
+	hits: 0,
+	health: 100
+}
+
+var me = {
+	name: 'Me',
+	hits: 0,
+	health: 100
+}
 
 function slap() {
-	health = health - 1;
-	hits = hits + 1;
+	player.health = player.health - 1;
+	player.hits = player.hits + 1;
 	updateAll();
 }
 
 function kick() {
-	health = health - 10;
-	hits = hits + 1;
+	player.health = player.health - 10;
+	player.hits = player.hits + 1;
 	updateAll();
 }
 
 function punch() {
-	health = health - 8;
-	hits = hits + 1;
+	player.health = player.health - 5;
+	player.hits = player.hits + 1;
 	updateAll();
 }
 
 function force() {
-	health = health - 50;
-	hits = hits + 1;
+	player.health = player.health - 20;
+	player.hits = player.hits + 1;
 	updateAll();
 }
 
@@ -31,47 +39,55 @@ function updateAll() {
 	updateHealth();
 	updateHits();
 	updateName();
-	if (health <= 0) {
+	if (player.health < 30) {
 		//health = 0;//not working
 		document.getElementById("player-panel").classList.add("panel-danger");
-		alert("You Win This Time...")
-		
 	} else {
 		document.getElementById("player-panel").classList.add("panel-default")
 
 	}
+	if (player.health <= 0) {
+		player.health = 0;
+		alert("You Win!")
+	}
 }
 
 //Constructor
-function Weapon(name,modifier,description){
+function Item(name, modifier, description) {
 	this.name = name;
 	this.modifier = modifier;
 	this.description = description;
+	this.draw = function(){
+		//
+	}
 }
 
-//Creating Weapons
-var brassKnuckles = new  Weapon('Brass Knuckle', health - 3, 'Inflicts 3pts more damage');
-var sword = new  Weapon('Sword', health - 5, 'Inflicts 5pts more damage');
-var mace = new  Weapon('Mace', health - 6, 'Inflicts 6pts more damage');
 
-console.log(brassKnuckles,sword,mace);
+//Creates an array of objects with Item constructor
+var itemsObj = {
+	shield: new Item('Shield', player.health += 10, 'This is an awesome shield'),
+	redbull: new Item('RedBull', player.health += 20, 'YYeeeaaaEEAAEAh!!!'),
+	brass: new Item('Brass Knuckles', player.health -= 10, 'Ouch!')
+}
 
-//Sets varianles to placeholder IDs
+var items = [itemsObj.shield,itemsObj.RedBull];
+
+//Sets variables to placeholder IDs
 var update = document.getElementById('playerHealth');
 var playerName = document.getElementById('playerName');
 var displayHits = document.getElementById('hits');
 
 //Functions to display point values to the page
 function updateHealth() {
-	update.innerText = health.toString();
+	update.innerText = player.health.toString();
 }
 
 function updateName() {
-	playerName.innerText = name;
+	playerName.innerText = player.name;
 }
 
 function updateHits() {
-	displayHits.innerText = hits.toString();
+	displayHits.innerText = player.hits.toString();
 }
 
 updateHealth();
