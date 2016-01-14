@@ -1,31 +1,48 @@
 <<html>
-<head>
-	<meta charset="UTF-8">
-	<title>MyObjectGame</title>
-	<link type="text/stylesheet" href="game.css" />
-	<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	<head>
+		<meta charset="UTF-8">
+		<title>MyObjectGame</title>
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-</head>
-<body>
-	<div class="panel panel-default">
-	<div class="panel panel-heading">
-		MyObjectGame<span id="playerHealth"></span>
-	</div>
-	<div class="panel panel-body">
-		
-		<img height="200" src="img/stick.jpg"/>
-	</div>
-	<div class="panel panel-footer">
-		<button onclick="slap()" class="btn btn-primary">Slap</button>
-	</div>
-	</div>
-	
-	<script src="game.js"></script>
-</body>
-</html>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+		crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
+		crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+		crossorigin="anonymous"></script>
+		<link rel="stylesheet" type="text/css" href="game.css" />
+	</head>
+
+	<body>
+		<div id="player-panel" class="panel">
+			<div class="panel panel-heading">
+				My Object Game
+				<br/>
+				<span>Player Name:</span><span id="playerName"></span>
+				<br/>
+				<span>Player Health:</span><span id="playerHealth"></span>
+				</br>
+				<span>Hits:</span><span id="hits"></span>
+
+			</div>
+			<div  class="panel panel-body">
+
+				<img height="200" src="img/stick.jpg" />
+			</div>
+			<div class="panel panel-footer">
+				<button onclick="slap()" class="btn btn-primary">Slap</button>
+				<button onclick="punch()" class="btn btn-primary">Punch</button>
+				<button onclick="kick()" class="btn btn-primary">Kick</button>
+				<button onclick="force()" class="btn btn-primary">Use the Force</button>
+			</div>
+		</div>
+
+		<script src="game.js"></script>
+	</body>
+
+	</html>
