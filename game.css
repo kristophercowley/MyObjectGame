@@ -1,6 +1,5 @@
 .panel-body {
-background-image: url("img/sf.jpg");
-
+background-image: url("img/mariobg.png");
 }
 button {
 	color: green;
@@ -10,4 +9,10 @@ background-color: black;
 }
 #reset {
 	float: right;
+}
+#mario {
+	float: right;
+}
+.center {
+text-align: center;
 }
