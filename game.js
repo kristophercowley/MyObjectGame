@@ -1,25 +1,41 @@
 
 //Creates an array of objects with Item constructor
 var itemsObj = {
-	shield: new Item('Shield', 10, 'This is an awesome shield'),
-	redbull: new Item('RedBull',  20, 'YYeeeaaaEEAAEAh!!!'),
-	brass: new Item('Brass Knuckles', -10, 'Ouch!')
+	shield: new Item('Shield',3, 'This is an awesome shield'),
+	redbull: new Item('RedBull', 5, 'YYeeeaaaEEAAEAh!!!'),
+	jacket: new Item("Jacket", 1, 'Sweet!')
+}
+
+//Constructor
+function Item(name, modifier, description) {
+	this.name = name;
+	this.modifier = modifier;
+	this.description = description;
+	this.draw = function () {
+		//
+	}
 }
 
 var player = {
 	name: "Arnold",
 	hits: 0,
 	health: 100,
-	items: [itemsObj.shield,itemsObj.RedBull],
-	}
-
-function addMods(){
+	items: [itemsObj.shield, itemsObj.redbull, itemsObj.jacket],
+	addMods: function (){
 		var total = 0;
-		for(var i = 0; i < player.items.length; i ++){
-			console.log(player.items[i]);
+		for (var i = 0; i < player.items.length; i++) {
+			total = total + player.items[i].modifier;
 		}
+	}
 }
-addMods()
+
+// function addMods(){
+// 		var total = 0;
+// 		for(var i = 0; i < player.items.length; i ++){
+// 			total = total + player.items[i].modifier;
+// 		}
+// }
+
 var me = {
 	name: 'Me',
 	hits: 0,
@@ -57,10 +73,10 @@ var displayHits = document.getElementById('hits');
 
 //Collection of update items to make an easier call
 function updateAll() {
-		update.innerText = player.health.toString();
-		playerName.innerText = player.name;
-		displayHits.innerText = player.hits.toString();
-		
+	update.innerText = player.health.toString();
+	playerName.innerText = player.name;
+	displayHits.innerText = player.hits.toString();
+
 	if (player.health < 30) {
 		//health = 0;//not working
 		document.getElementById("player-panel").classList.add("panel-danger");
@@ -74,14 +90,6 @@ function updateAll() {
 	}
 }
 
-//Constructor
-function Item(name, modifier, description) {
-	this.name = name;
-	this.modifier = modifier;
-	this.description = description;
-	this.draw = function(){
-		//
-	}
-}
+
 
 updateAll();
