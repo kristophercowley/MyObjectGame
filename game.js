@@ -82,7 +82,9 @@ var displayHits = document.getElementById('hits');
 
 //Collection of update items to make an easier call
 function updateAll() {
-	totalDamage();
+	player.health -= damage;
+	//totalDamage();
+	damage = 0;
 	update.innerText = player.health.toString();
 	playerName.innerText = player.name;
 	displayHits.innerText = player.hits.toString();
