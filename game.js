@@ -1,7 +1,7 @@
-
+var damage = 0;
 //Creates an array of objects with Item constructor
 var itemsObj = {
-	shield: new Item('Shield',.3, 'This is an awesome shield'),
+	shield: new Item('Shield', .3, 'This is an awesome shield'),
 	redbull: new Item('RedBull', .5, 'YYeeeaaaEEAAEAh!!!'),
 	jacket: new Item("Jacket", .1, 'Sweet!')
 }
@@ -21,41 +21,56 @@ var player = {
 	hits: 0,
 	health: 100,
 	items: [itemsObj.shield, itemsObj.redbull, itemsObj.jacket],
-	addMods: function (){
+	addMods: function () {
 		var total = 0;
 		for (var i = 0; i < player.items.length; i++) {
 			total = total + player.items[i].modifier;
-		}total = Math.ceil(total)
+		}
 		console.log(total)
 	}
 }
 
-var me = {
-	name: 'Me',
-	hits: 0,
-	health: 100
+//  function totalDamage(){
+// 	return damage * player.addMods()  
+	
+//  }
+
+function reset() {
+	player.health = 100;
+	player.hits = 0;
+	updateAll();
+
 }
+// var me = {
+// 	name: 'Me',
+// 	hits: 0,
+// 	health: 100
+// }
 
 function slap() {
-	player.health = player.health - 1;
+	damage = 1;
+	//player.health = player.health - 1;
 	player.hits = player.hits + 1;
 	updateAll();
 }
 
 function kick() {
-	player.health = player.health - 10;
+	damage = 10;
+	//player.health = player.health - 10;
 	player.hits = player.hits + 1;
 	updateAll();
 }
 
 function punch() {
-	player.health = player.health - 5;
+	damage = 5;
+	//player.health = player.health - 5;
 	player.hits = player.hits + 1;
 	updateAll();
 }
 
 function force() {
-	player.health = player.health - 20;
+	damage = 20;
+	//player.health = player.health - 20;
 	player.hits = player.hits + 1;
 	updateAll();
 }
@@ -67,14 +82,16 @@ var displayHits = document.getElementById('hits');
 
 //Collection of update items to make an easier call
 function updateAll() {
+	totalDamage();
 	update.innerText = player.health.toString();
 	playerName.innerText = player.name;
 	displayHits.innerText = player.hits.toString();
-
+	
 	if (player.health < 30) {
 		//health = 0;//not working
 		document.getElementById("player-panel").classList.add("panel-danger");
 	} else {
+		document.getElementById("player-panel").classList.remove("panel-danger");
 		document.getElementById("player-panel").classList.add("panel-default")
 
 	}
