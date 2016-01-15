@@ -1,9 +1,9 @@
 
 //Creates an array of objects with Item constructor
 var itemsObj = {
-	shield: new Item('Shield',3, 'This is an awesome shield'),
-	redbull: new Item('RedBull', 5, 'YYeeeaaaEEAAEAh!!!'),
-	jacket: new Item("Jacket", 1, 'Sweet!')
+	shield: new Item('Shield',.3, 'This is an awesome shield'),
+	redbull: new Item('RedBull', .5, 'YYeeeaaaEEAAEAh!!!'),
+	jacket: new Item("Jacket", .1, 'Sweet!')
 }
 
 //Constructor
@@ -25,16 +25,10 @@ var player = {
 		var total = 0;
 		for (var i = 0; i < player.items.length; i++) {
 			total = total + player.items[i].modifier;
-		}
+		}total = Math.ceil(total)
+		console.log(total)
 	}
 }
-
-// function addMods(){
-// 		var total = 0;
-// 		for(var i = 0; i < player.items.length; i ++){
-// 			total = total + player.items[i].modifier;
-// 		}
-// }
 
 var me = {
 	name: 'Me',
