@@ -6,7 +6,7 @@ var itemsObj = {
 	jacket: new Item("Jacket", .1, 'Sweet!')
 }
 
-//Constructor
+//Constructor for defensive items
 function Item(name, modifier, description) {
 	this.name = name;
 	this.modifier = modifier;
@@ -15,7 +15,7 @@ function Item(name, modifier, description) {
 		//
 	}
 }
-
+//Creates the enemy player
 var player = {
 	name: "Arnold",
 	hits: 0,
@@ -34,19 +34,21 @@ var player = {
 // 	return damage * player.addMods()  
 	
 //  }
-
+//Resets to initial values// Restarts game
 function reset() {
 	player.health = 100;
 	player.hits = 0;
 	updateAll();
 
 }
+//Beginning of a future me object
 // var me = {
 // 	name: 'Me',
 // 	hits: 0,
 // 	health: 100
 // }
 
+//Attack functions
 function slap() {
 	damage = 1;
 	//player.health = player.health - 1;
@@ -104,5 +106,5 @@ function updateAll() {
 }
 
 
-
+//Initializes the page
 updateAll();
