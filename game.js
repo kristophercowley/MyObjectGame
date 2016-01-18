@@ -84,13 +84,19 @@ var displayHits = document.getElementById('hits');
 
 //Collection of update items to make an easier call
 function updateAll() {
-	player.health -= damage;
+	//var marioElem = document.getElementById("mario");
+	if (damage > 0) {
+		player.health -= damage;
+		//document.getElementById("mario").classList.remove("termy");
+		//document.getElementById("mario").classlist.add("vader")
+	}
+
 	//totalDamage();
 	damage = 0;
 	update.innerText = player.health.toString();
 	playerName.innerText = player.name;
 	displayHits.innerText = player.hits.toString();
-	
+
 	if (player.health < 30) {
 		//health = 0;//not working
 		document.getElementById("player-panel").classList.add("panel-danger");

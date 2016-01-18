@@ -16,3 +16,6 @@ background-color: black;
 .center {
 text-align: center;
 }
+.vader {
+	background-image: url("img/vader.png")
+}
