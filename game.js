@@ -1,5 +1,19 @@
 var damage = 0;
 var healthBarElem = document.getElementById('health-bar');
+var winnerElem = document.getElementById('winner');
+var bElem1 = document.getElementById('abled1');
+var bElem2 = document.getElementById('abled2');
+var bElem3 = document.getElementById('abled3');
+var bElem4 = document.getElementById('abled4');
+
+// Disables buttons at 0 health
+function disableButtons() {
+    bElem1.disabled = true;
+    bElem2.disabled = true;
+    bElem3.disabled = true;
+    bElem4.disabled = true;
+}
+
 // Updates health bar
 function updateHealthBar() {
     healthBarElem.style.width = player.health + "%";
@@ -123,9 +137,12 @@ function updateAll() {
     }
     if (player.health <= 0) {
         player.health = 0;
-        alert("You Win!")
+        updateHealthBar();
+        winnerElem.innerText = " Sub Zero Wins! The Terminator has been destroyed!";
+        disableButtons();
     }
     updateHealthBar();
+
 }
 
 
