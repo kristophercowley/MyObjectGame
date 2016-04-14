@@ -1,4 +1,9 @@
 var damage = 0;
+var healthBarElem = document.getElementById('health-bar');
+// Updates health bar
+function updateHealthBar(){
+    healthBarElem.style.width = player.health + "%";
+}
 //Creates an array of objects with Item constructor
 var itemsObj = {
 	shield: new Item('Shield', .3, 'This is an awesome shield'),
@@ -87,7 +92,7 @@ function updateAll() {
 	//var marioElem = document.getElementById("mario");
 	if (damage > 0) {
 		player.health -= damage;
-		//document.getElementById("mario").classList.remove("termy");
+		var fireElem = document.getElementById("fire").attributes
 		//document.getElementById("mario").classlist.add("vader")
 	}
 
@@ -109,6 +114,7 @@ function updateAll() {
 		player.health = 0;
 		alert("You Win!")
 	}
+    updateHealthBar();
 }
 
 

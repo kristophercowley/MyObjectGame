@@ -10,12 +10,18 @@ background-color: black;
 #reset {
 	float: right;
 }
-#mario {
+#term {
 	float: right;
+	position: relative;
 }
 .center {
 text-align: center;
 }
 .vader {
 	background-image: url("img/vader.png")
+}
+#fire {
+	float: right;
+	
+	
 }

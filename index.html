@@ -1,52 +1,60 @@
 <<html>
 
-	<head>
-		<meta charset="UTF-8">
-		<title>MyObjectGame</title>
+    <head>
+        <meta charset="UTF-8">
+        <title>MyObjectGame</title>
 
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-		crossorigin="anonymous">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
 
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
-		crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
+        crossorigin="anonymous">
 
 
-		<link rel="stylesheet" type="text/css" href="game.css" />
-	</head>
+        <link rel="stylesheet" type="text/css" href="game.css" />
+    </head>
 
-	<body>
-		<div id="player-panel" class="panel">
-			<div class="panel panel-heading">
-				<h1 class="center" ><b>Sub-Zero VS. Terminator</b></h1>
-				<br/>
-				<span>Player Name:</span><span id="playerName"></span>
-				<br/>
-				<span>Player Health:</span><span id="playerHealth"></span>
-				</br>
-				<span>Hits:</span><span id="hits"></span>
+    <body>
+        <div id="player-panel" class="panel">
+            <div class="panel panel-heading">
+                <h1 class="center"><b>Sub-Zero VS. Terminator</b></h1>
+                <br/>
+                <span>Player Name:</span><span id="playerName"></span>
+                <br/>
+                <span>Player Health:</span><span id="playerHealth"></span>
+                <br>
+                <div class="progress">
+                    <div id="health-bar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"
+                    style="width: 45%">
+                        <span class="sr-only">45% Complete</span>
+                    </div>
+                </div>
+                </br>
+                <span>Hits:</span><span id="hits"></span>
 
-			</div>
-			<div class="panel panel-body">
+            </div>
+            <div class="panel panel-body">
 
-				<img height="200" src="img/sub.png" />
-			    <img id="mario" height="200" src="img/term.png" />
-				<audio></audio>
-			</div>
-			<div class="panel panel-footer">
-				<button onclick="slap()" class="btn btn-primary">Slap</button>
-				<button onclick="punch()" class="btn btn-primary">Punch</button>
-				<button onclick="kick()" class="btn btn-primary">Kick</button>
-				<button onclick="force()" class="btn btn-primary">Use the Force</button>
-				<button id="reset" onclick="reset()" class="btn btn-danger">Reset the Game</button>
-			</div>
-		</div>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-		crossorigin="anonymous"></script>
-		<script src="game.js"></script>
-	</body>
+                <img height="200" src="img/sub.png" />
+                <img id="term" height="200" src="img/term.png" />
+                <img id="fire" height="50" src="img/fire.png" />
+                <audio></audio>
+            </div>
+            <div class="panel panel-footer">
+                <button onclick="slap()" class="btn btn-primary">Slap</button>
+                <button onclick="punch()" class="btn btn-primary">Punch</button>
+                <button onclick="kick()" class="btn btn-primary">Kick</button>
+                <button onclick="force()" class="btn btn-primary">Use the Force</button>
+                <button id="reset" onclick="reset()" class="btn btn-danger">Reset the Game</button>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+        crossorigin="anonymous"></script>
+        <script src="game.js"></script>
+    </body>
 
-	</html>
+    </html>
