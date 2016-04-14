@@ -5,6 +5,45 @@ var bElem1 = document.getElementById('abled1');
 var bElem2 = document.getElementById('abled2');
 var bElem3 = document.getElementById('abled3');
 var bElem4 = document.getElementById('abled4');
+var fireElem = document.getElementById('fire');
+var termElem = document.getElementById('term');
+var initFireElem = document.getElementById('init-fire');
+var centerFireElem = document.getElementById('init-fire2');
+fireElem.style.visibility = 'hidden';
+initFireElem.style.visibility = 'hidden'
+centerFireElem.style.visibility = 'hidden'
+
+
+
+// Attack fire
+function attackFullFire() {
+    initFireElem.style.visibility = 'visible';
+    setTimeout(hideInit, 200);
+    setTimeout(function() { centerFireElem.style.visibility = 'visible' }, 200);
+    setTimeout(hideCenter, 400)
+    setTimeout(displayFire, 400);
+
+}
+// display fire on attack
+function displayFire() {
+    fireElem.style.visibility = 'visible';
+    setTimeout(hideFire, 200);
+}
+
+// hide fire
+function hideFire() {
+    fireElem.style.visibility = 'hidden';
+}
+
+// hide init fire
+function hideInit() {
+    initFireElem.style.visibility = 'hidden';
+}
+
+// hide center fire
+function hideCenter() {
+    centerFireElem.style.visibility = 'hidden';
+}
 
 // Disables buttons at 0 health
 function disableButtons() {
@@ -12,6 +51,14 @@ function disableButtons() {
     bElem2.disabled = true;
     bElem3.disabled = true;
     bElem4.disabled = true;
+}
+
+// Enables buttons
+function enableButtons() {
+    bElem1.disabled = false;
+    bElem2.disabled = false;
+    bElem3.disabled = false;
+    bElem4.disabled = false;
 }
 
 // Updates health bar
@@ -58,7 +105,7 @@ function reset() {
     player.health = 100;
     player.hits = 0;
     updateAll();
-
+    enableButtons();
 }
 //Beginning of a future me object
 // var me = {
@@ -73,6 +120,7 @@ function slap() {
     //player.health = player.health - 1;
     player.hits = player.hits + 1;
     updateAll();
+    attackFullFire();
 }
 
 function kick() {
@@ -80,6 +128,7 @@ function kick() {
     //player.health = player.health - 10;
     player.hits = player.hits + 1;
     updateAll();
+    attackFullFire();
 }
 
 function punch() {
@@ -87,6 +136,7 @@ function punch() {
     //player.health = player.health - 5;
     player.hits = player.hits + 1;
     updateAll();
+    attackFullFire();
 }
 
 function force() {
@@ -94,6 +144,7 @@ function force() {
     //player.health = player.health - 20;
     player.hits = player.hits + 1;
     updateAll();
+    attackFullFire();
 }
 
 //Sets variables to placeholder IDs
@@ -117,7 +168,6 @@ function updateAll() {
     displayHits.innerText = player.hits.toString();
 
     if (player.health < 30) {
-        //health = 0;//not working
         document.getElementById("player-panel").classList.add("panel-danger");
         healthBarElem.classList.add('progress-bar-danger');
     } else if (player.health > 30 && player.health < 60) {
@@ -139,6 +189,7 @@ function updateAll() {
         player.health = 0;
         updateHealthBar();
         winnerElem.innerText = " Sub Zero Wins! The Terminator has been destroyed!";
+        termElem.style.visibility = 'hidden';
         disableButtons();
     }
     updateHealthBar();

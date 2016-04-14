@@ -22,10 +22,14 @@ text-align: center;
 }
 #fire {
 	float: right;
-	
-	
+    	
 }
 #winner{
     text-align: center;
     font-size: 25px;
+}
+#init-fire2{
+    margin-left: 270px;
+    /*margin-left: auto;
+    margin-right: auto;*/
 }
