@@ -9,11 +9,22 @@ var fireElem = document.getElementById('fire');
 var termElem = document.getElementById('term');
 var initFireElem = document.getElementById('init-fire');
 var centerFireElem = document.getElementById('init-fire2');
+termElem.style.visibility = 'visible';
 fireElem.style.visibility = 'hidden';
-initFireElem.style.visibility = 'hidden'
-centerFireElem.style.visibility = 'hidden'
+initFireElem.style.visibility = 'hidden';
+centerFireElem.style.visibility = 'hidden';
 
+// Gets user name
+function getName(){
+    player.name = prompt('Enter a name for your player...');
+    playerName.innerText = player.name;
+}
 
+// Sets alt image for hits
+function isHit(){
+    termElem.src = 'img/termhit.png';
+    setTimeout(function(){termElem.src = 'img/term.png'}, 100)
+}
 
 // Attack fire
 function attackFullFire() {
@@ -22,7 +33,8 @@ function attackFullFire() {
     setTimeout(function() { centerFireElem.style.visibility = 'visible' }, 200);
     setTimeout(hideCenter, 400)
     setTimeout(displayFire, 400);
-
+    setTimeout(updateAll,600);
+    setTimeout(isHit,600);
 }
 // display fire on attack
 function displayFire() {
@@ -83,7 +95,7 @@ function Item(name, modifier, description) {
 }
 //Creates the enemy player
 var player = {
-    name: "Arnold",
+    name: "Sub-Zero",
     hits: 0,
     health: 100,
     items: [itemsObj.shield, itemsObj.redbull, itemsObj.jacket],
@@ -106,8 +118,11 @@ function reset() {
     player.hits = 0;
     updateAll();
     enableButtons();
+    termElem.style.visibility = 'visible';
+    winnerElem.innerText = "";
+    termElem.src = 'img/term.png'
 }
-//Beginning of a future me object
+//Beginning of a future term object
 // var me = {
 // 	name: 'Me',
 // 	hits: 0,
@@ -119,7 +134,7 @@ function slap() {
     damage = 1;
     //player.health = player.health - 1;
     player.hits = player.hits + 1;
-    updateAll();
+    // updateAll();
     attackFullFire();
 }
 
@@ -127,7 +142,7 @@ function kick() {
     damage = 10;
     //player.health = player.health - 10;
     player.hits = player.hits + 1;
-    updateAll();
+    // updateAll();
     attackFullFire();
 }
 
@@ -135,7 +150,7 @@ function punch() {
     damage = 5;
     //player.health = player.health - 5;
     player.hits = player.hits + 1;
-    updateAll();
+    // updateAll();
     attackFullFire();
 }
 
@@ -143,7 +158,7 @@ function force() {
     damage = 20;
     //player.health = player.health - 20;
     player.hits = player.hits + 1;
-    updateAll();
+    // updateAll();
     attackFullFire();
 }
 
@@ -188,8 +203,9 @@ function updateAll() {
     if (player.health <= 0) {
         player.health = 0;
         updateHealthBar();
-        winnerElem.innerText = " Sub Zero Wins! The Terminator has been destroyed!";
-        termElem.style.visibility = 'hidden';
+        winnerElem.innerText = player.name + " Wins! The Terminator was destroyed in " + player.hits + " hits!";
+        // termElem.style.visibility = 'hidden';
+        termElem.src = 'img/pile.png';
         disableButtons();
     }
     updateHealthBar();
@@ -199,3 +215,4 @@ function updateAll() {
 
 //Initializes the page
 updateAll();
+getName();
