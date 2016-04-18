@@ -9,6 +9,8 @@ var fireElem = document.getElementById('fire');
 var termElem = document.getElementById('term');
 var initFireElem = document.getElementById('init-fire');
 var centerFireElem = document.getElementById('init-fire2');
+var enemyName = document.getElementById('enemyName');
+enemyName.innerText = "Terminator Schwarzenegger"
 termElem.style.visibility = 'visible';
 fireElem.style.visibility = 'hidden';
 initFireElem.style.visibility = 'hidden';
@@ -248,7 +250,7 @@ function updateAll() {
         disableButtons();
         debugger
         winnerElem.innerText = player.name + " Wins! The Terminator was destroyed in " + player.hits + " hits!";
-        // termElem.style.visibility = 'hidden';
+        winnerElem.style.color = "green";
         clearInterval(interval);
     }
     updateHealthBar();
