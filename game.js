@@ -15,15 +15,43 @@ initFireElem.style.visibility = 'hidden';
 centerFireElem.style.visibility = 'hidden';
 
 // Gets user name
-function getName(){
+function getName() {
     player.name = prompt('Enter a name for your player...');
     playerName.innerText = player.name;
+    // gameTimer();
 }
 
+function startGame() {
+    reset();
+    enableButtons();
+    gameTimer();
+}
+
+// Global Timer variable
+var interval;
+
+//Game timer setup
+function gameTimer() {
+    var min = 0;
+    var sec = 30;
+    interval = setInterval(function() {
+        document.getElementById("timer").innerHTML = min + " : " + sec;
+        sec--;
+        if (sec == 0) {
+            clearInterval(interval);
+            winnerElem.innerText = "Your going to have to be faster than that to kill the Terminator";
+            winnerElem.style.color = "red";
+            sec = 30;
+            disableButtons();
+        }
+    }, 1000);
+}
+
+
 // Sets alt image for hits
-function isHit(){
+function isHit() {
     termElem.src = 'img/termhit.png';
-    setTimeout(function(){termElem.src = 'img/term.png'}, 100)
+    setTimeout(function() { termElem.src = 'img/term.png' }, 100)
 }
 
 // Attack fire
@@ -33,8 +61,8 @@ function attackFullFire() {
     setTimeout(function() { centerFireElem.style.visibility = 'visible' }, 200);
     setTimeout(hideCenter, 400)
     setTimeout(displayFire, 400);
-    setTimeout(updateAll,600);
-    setTimeout(isHit,600);
+    setTimeout(updateAll, 600);
+    setTimeout(isHit, 600);
 }
 // display fire on attack
 function displayFire() {
@@ -120,10 +148,13 @@ function reset() {
     enableButtons();
     termElem.style.visibility = 'visible';
     winnerElem.innerText = "";
-    termElem.src = 'img/term.png'
+    termElem.src = 'img/term.png';
+    clearInterval(interval);
+    document.getElementById("timer").innerHTML = 00 + " : " + 00;
 }
-//Beginning of a future term object
-// var me = {
+
+//Beginning of a future enemy object
+// var enemy = {
 // 	name: 'Me',
 // 	hits: 0,
 // 	health: 100
@@ -132,34 +163,35 @@ function reset() {
 //Attack functions
 function slap() {
     damage = 1;
-    //player.health = player.health - 1;
     player.hits = player.hits + 1;
-    // updateAll();
     attackFullFire();
+    bElem1.disabled = true;
+    setTimeout(function() { bElem1.disabled = false; }, 1000);
+}
+
+
+function punch() {
+    damage = 5;
+    player.hits = player.hits + 1;
+    attackFullFire();
+    bElem2.disabled = true;
+    setTimeout(function() { bElem2.disabled = false; }, 5000);
 }
 
 function kick() {
     damage = 10;
-    //player.health = player.health - 10;
     player.hits = player.hits + 1;
-    // updateAll();
     attackFullFire();
-}
-
-function punch() {
-    damage = 5;
-    //player.health = player.health - 5;
-    player.hits = player.hits + 1;
-    // updateAll();
-    attackFullFire();
+    bElem3.disabled = true;
+    setTimeout(function() { bElem3.disabled = false; }, 9000);
 }
 
 function force() {
     damage = 20;
-    //player.health = player.health - 20;
     player.hits = player.hits + 1;
-    // updateAll();
     attackFullFire();
+    bElem4.disabled = true;
+    setTimeout(function() { bElem4.disabled = false; }, 14000);
 }
 
 //Sets variables to placeholder IDs
@@ -203,10 +235,13 @@ function updateAll() {
     if (player.health <= 0) {
         player.health = 0;
         updateHealthBar();
+        // disabled buttons come back after timeout
+        disableButtons();
+        debugger
+        termElem.src = 'img/pile.png';
         winnerElem.innerText = player.name + " Wins! The Terminator was destroyed in " + player.hits + " hits!";
         // termElem.style.visibility = 'hidden';
-        termElem.src = 'img/pile.png';
-        disableButtons();
+        clearInterval(interval);
     }
     updateHealthBar();
 
@@ -214,5 +249,6 @@ function updateAll() {
 
 
 //Initializes the page
+disableButtons();
 updateAll();
 getName();

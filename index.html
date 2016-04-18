@@ -25,6 +25,8 @@
                 <br/>
                 <span>Player Health:</span><span id="playerHealth"></span>
                 <br>
+                <span>Hits:</span><span id="hits"></span>
+
                 <div class="progress">
                     <div id="health-bar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0"
                     aria-valuemax="100" style="width: 45%">
@@ -32,7 +34,7 @@
                     </div>
                 </div>
                 </br>
-                <span>Hits:</span><span id="hits"></span>
+                <h2 class="time-bar"><span><em>Time: </em></span><span id="timer"><b></b></span></h2>
 
             </div>
             <div class="panel panel-body">
@@ -44,11 +46,16 @@
                 <audio></audio>
             </div>
             <div class="panel panel-footer">
+                <span class="btn btn-group">
                 <button id="abled1" onclick="slap()" class="btn btn-primary">Slap</button>
                 <button id="abled2" onclick="punch()" class="btn btn-primary">Punch</button>
                 <button id="abled3" onclick="kick()" class="btn btn-primary">Kick</button>
                 <button id="abled4" onclick="force()" class="btn btn-primary">Use the Force</button>
+                </span>
+                <span class="btn btn-group">
+                <button id="startGame" class="btn btn-warning" onclick="startGame()">Start Game</button>
                 <button id="reset" onclick="reset()" class="btn btn-danger">Reset the Game</button>
+                </span>
                 <span id="winner"></span>
             </div>
         </div>
