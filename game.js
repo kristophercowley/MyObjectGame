@@ -18,7 +18,6 @@ centerFireElem.style.visibility = 'hidden';
 function getName() {
     player.name = prompt('Enter a name for your player...');
     playerName.innerText = player.name;
-    // gameTimer();
 }
 
 function startGame() {
@@ -35,11 +34,15 @@ function gameTimer() {
     var min = 0;
     var sec = 30;
     interval = setInterval(function() {
-        document.getElementById("timer").innerHTML = min + " : " + sec;
+        if(sec < 10){
+            document.getElementById("timer").innerHTML = min + " : 0" + sec;
+        }else{
+            document.getElementById("timer").innerHTML = min + " : " + sec;     
+        }
         sec--;
         if (sec == 0) {
             clearInterval(interval);
-            winnerElem.innerText = "Your going to have to be faster than that to kill the Terminator";
+            winnerElem.innerText = "Your going to have to be faster than that to kill me!";
             winnerElem.style.color = "red";
             sec = 30;
             disableButtons();
@@ -51,7 +54,12 @@ function gameTimer() {
 // Sets alt image for hits
 function isHit() {
     termElem.src = 'img/termhit.png';
-    setTimeout(function() { termElem.src = 'img/term.png' }, 100)
+    setTimeout(function() { 
+        if(player.health <= 0){
+            termElem.src = 'img/boom.png'
+        }else{
+            termElem.src = 'img/term.png' 
+    }}, 100)
 }
 
 // Attack fire
@@ -150,7 +158,7 @@ function reset() {
     winnerElem.innerText = "";
     termElem.src = 'img/term.png';
     clearInterval(interval);
-    document.getElementById("timer").innerHTML = 00 + " : " + 00;
+    document.getElementById("timer").innerHTML =  "0 : 00";
 }
 
 //Beginning of a future enemy object
@@ -233,12 +241,12 @@ function updateAll() {
 
     }
     if (player.health <= 0) {
+        termElem.src = 'img/boom.png';
         player.health = 0;
         updateHealthBar();
         // disabled buttons come back after timeout
         disableButtons();
         debugger
-        termElem.src = 'img/pile.png';
         winnerElem.innerText = player.name + " Wins! The Terminator was destroyed in " + player.hits + " hits!";
         // termElem.style.visibility = 'hidden';
         clearInterval(interval);
