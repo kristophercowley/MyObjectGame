@@ -55,10 +55,10 @@ function gameTimer() {
 
 // Sets alt image for hits
 function isHit() {
-    termElem.src = 'img/termhit.png';
+    termElem.src = 'img/termhit-sm.png';
     setTimeout(function() { 
         if(player.health <= 0){
-            termElem.src = 'img/boom.png'
+            termElem.src = 'img/boom-sm.png'
         }else{
             termElem.src = 'img/term.png' 
     }}, 100)
@@ -243,7 +243,7 @@ function updateAll() {
 
     }
     if (player.health <= 0) {
-        termElem.src = 'img/boom.png';
+        termElem.src = 'img/boom-sm.png';
         player.health = 0;
         updateHealthBar();
         // disabled buttons come back after timeout
